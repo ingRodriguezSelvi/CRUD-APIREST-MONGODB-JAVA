@@ -9,10 +9,4 @@ public class Circle extends Shape implements IShape {
     public Double getArea(){
         return Math.PI* Math.pow(this.getDiameter()/2,2);
     }
-    @Override
-    public String toString() {
-        return getType().name() + "[Diameter=" + getDiameter() + ", Area=" + getArea()
-				+ "]";
-    }   
-  
 }

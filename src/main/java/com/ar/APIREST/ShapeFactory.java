@@ -3,35 +3,34 @@ package com.ar.APIREST;
 import com.ar.APIREST.exeptions.NoShapeTypeException;
 import com.ar.APIREST.model.Circle;
 import com.ar.APIREST.model.IShape;
+import com.ar.APIREST.model.Shape;
 import com.ar.APIREST.model.Square;
 import com.ar.APIREST.model.Triangle;
-import com.ar.APIREST.model.TypeShape;
+
 
 public class ShapeFactory {
     
-    public IShape makeShape(String _id,TypeShape type, Double base, Double height, Double diameter)
+    public IShape makeShape(Shape shape)
     {
-        IShape shape=null;
+        IShape Ishape=null;
 
-        if(type==null){
+        if(shape.type==null){
             throw new NoShapeTypeException("Shape type not valid");
         }
-
-        switch(type){
+        switch(shape.type){
         case CIRCLE:
-            shape = new Circle(diameter,_id);
+            shape = new Circle(shape.diameter,shape._id);
         break;
         case TRIANGLE:
-            shape= new Triangle(_id, base, height);
+            shape= new Triangle(shape._id, shape.base, shape.height);
         break;
         case SQUARE:
-            shape=new Square(_id,base);
+            shape=new Square(shape._id,shape.base);
         break;    
 		default:
 			throw new NoShapeTypeException("Shape type not valid");
 		}
         
-
-        return shape;
+        return Ishape;
     } 
 }

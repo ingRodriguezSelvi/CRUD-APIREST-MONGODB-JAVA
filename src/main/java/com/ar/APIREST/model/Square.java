@@ -7,8 +7,4 @@ public class Square extends Shape implements IShape {
     public Double getArea(){
         return this.getBase() * this.getBase();
     }
-    @Override
-    public String toString(){
-        return getType().name() + "[base=" + getBase() + ", Area=" + getArea() + "]";
-    }
 }

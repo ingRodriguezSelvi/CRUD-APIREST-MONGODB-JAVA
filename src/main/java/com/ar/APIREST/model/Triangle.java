@@ -8,14 +8,5 @@ public class Triangle extends Shape implements IShape {
     public Double getArea(){
         return (this.getBase()*this.getHeight())/2;
     }
-    @Override
-    public String toString(){
     
-        return getType().name()
-         + "[base=" + getBase() 
-         + ", height=" 
-         + getHeight() + ",  area)=" 
-         + getArea() +  "]";
-	
-    }
 }

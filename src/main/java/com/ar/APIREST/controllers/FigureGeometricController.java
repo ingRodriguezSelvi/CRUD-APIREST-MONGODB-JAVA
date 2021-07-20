@@ -30,8 +30,8 @@ import org.springframework.web.bind.annotation.RestController;
 		RequestMethod.DELETE })
 @RequestMapping("/api/Shape")
 public class FigureGeometricController {
-public Optional<Shape> x;
-public Shape w;
+public Optional<Shape> shape;
+public Shape shapeArea;
 
 	@Autowired
 	private IFigureGeomtric repository;
@@ -47,8 +47,8 @@ public Shape w;
 	}
 	@GetMapping("/{id}")
 	public  Optional<Shape> readId(@PathVariable String id) {
-		this.x= repository.findById(id);
-		return x;
+		this.shape= repository.findById(id);
+		return shape;
 	}
 
 	@PutMapping("/{id}")
@@ -65,27 +65,13 @@ public Shape w;
 	public IShape readAll(@PathVariable String id){
 		ShapeFactory factory=new ShapeFactory();
 		IShape shape=null;
-		this.x=repository.findById(id);
-		this.w=this.x.get();
-
-        if(this.w.type==null){
+		this.shape=repository.findById(id);
+		this.shapeArea=this.shape.get();	
+        if(this.shapeArea.type==null){
             throw new NoShapeTypeException("Shape type not valid");
-        }
-        switch(this.w.type){
-        case CIRCLE:
-			shape=factory.makeShape(this.w._id, this.w.type, null, null, this.w.diameter);	
-        break;
-		case TRIANGLE:
-			shape=factory.makeShape(this.w._id, this.w.type, this.w.base, this.w.height, null);
-		break;
-		case SQUARE:
-			shape=factory.makeShape(this.w._id,this.w.type,this.w.base,null,null);
-		break;
-		default:
-			throw new NoShapeTypeException("Shape type not valid");
-		}
+        }else{
+			shape=factory.makeShape(this.shapeArea);
+		} 
 		return shape;
-	}
-				
-		
+	}		
 }
