@@ -51,12 +51,12 @@ public Shape w;
 		return x;
 	}
 
-	@PutMapping("/Shape/{id}")
+	@PutMapping("/{id}")
 	public Shape update(@PathVariable String id, @Validated @RequestBody Shape p) {
 		return repository.save(p);
 	}
 
-	@DeleteMapping("/Shape/{id}")
+	@DeleteMapping("/{id}")
 	public void delete(@PathVariable String id) {
 		repository.deleteById(id);
 	}
