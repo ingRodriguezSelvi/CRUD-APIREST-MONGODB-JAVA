@@ -10,5 +10,5 @@ public class NoShapeTypeException extends RuntimeException {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 }

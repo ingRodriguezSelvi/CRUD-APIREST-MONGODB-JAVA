@@ -23,15 +23,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
 @RestController
 @CrossOrigin(origins = "*", methods = { RequestMethod.POST, RequestMethod.GET, RequestMethod.PUT,
 		RequestMethod.DELETE })
 @RequestMapping("/api/Shape")
 public class FigureGeometricController {
-public Optional<Shape> shape;
-public Shape shapeArea;
+	public Optional<Shape> shape;
+	public Shape shapeArea;
 
 	@Autowired
 	private IFigureGeomtric repository;
@@ -45,9 +43,10 @@ public Shape shapeArea;
 	public List<Shape> readAll() {
 		return repository.findAll();
 	}
+
 	@GetMapping("/{id}")
-	public  Optional<Shape> readId(@PathVariable String id) {
-		this.shape= repository.findById(id);
+	public Optional<Shape> readId(@PathVariable String id) {
+		this.shape = repository.findById(id);
 		return shape;
 	}
 
@@ -62,16 +61,16 @@ public Shape shapeArea;
 	}
 
 	@GetMapping("area/{id}")
-	public IShape readAll(@PathVariable String id){
-		ShapeFactory factory=new ShapeFactory();
-		IShape shape=null;
-		this.shape=repository.findById(id);
-		this.shapeArea=this.shape.get();	
-        if(this.shapeArea.type==null){
-            throw new NoShapeTypeException("Shape type not valid");
-        }else{
-			shape=factory.makeShape(this.shapeArea);
-		} 
+	public IShape readAll(@PathVariable String id) {
+		ShapeFactory factory = new ShapeFactory();
+		IShape shape = null;
+		this.shape = repository.findById(id);
+		this.shapeArea = this.shape.get();
+		if (this.shapeArea.type == null) {
+			throw new NoShapeTypeException("Shape type not valid");
+		} else {
+			shape = factory.makeShape(this.shapeArea);
+		}
 		return shape;
-	}		
+	}
 }

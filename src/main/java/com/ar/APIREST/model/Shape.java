@@ -1,35 +1,32 @@
 package com.ar.APIREST.model;
 
-
-
 import com.mongodb.lang.NonNull;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "shapes")
-public class Shape   {
-	
+public class Shape {
+
 	@Id
-    @NonNull
+	@NonNull
 	public String _id;
-	
+
 	public TypeShape type;
-	
+
 	public Double base;
 
 	public Double height;
 
 	public Double diameter;
 
-	public Shape(String _id,TypeShape type, Double base, Double height, Double diameter) {
-        this._id=_id;
+	public Shape(String _id, TypeShape type, Double base, Double height, Double diameter) {
+		this._id = _id;
 		this.type = type;
 		this.base = base;
 		this.height = height;
 		this.diameter = diameter;
 	}
-	
 
 	public String get_id() {
 		return _id;
