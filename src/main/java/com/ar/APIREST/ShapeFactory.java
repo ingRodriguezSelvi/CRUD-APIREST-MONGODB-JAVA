@@ -11,11 +11,9 @@ public class ShapeFactory {
 
     public IShape makeShape(Shape inshape) {
         IShape shape = null;
-
         if (inshape.type == null) {
             throw new NoShapeTypeException("Shape type not valid");
         }
-
         switch (inshape.type) {
             case CIRCLE:
                 shape = new Circle(inshape.diameter, inshape._id);
@@ -29,7 +27,6 @@ public class ShapeFactory {
             default:
                 throw new NoShapeTypeException("Shape type not valid");
         }
-
         return shape;
     }
 }
