@@ -30,8 +30,8 @@ public class FigureGeometricController {
 	private IFigureGeomtric repository;
 
 	@PostMapping("/addShape")
-	public Shape create(@Validated @RequestBody Shape p) {
-		return repository.insert(p);
+	public Shape create(@Validated @RequestBody Shape s) {
+		return repository.insert(s);
 	}
 
 	@GetMapping("/")
@@ -46,8 +46,8 @@ public class FigureGeometricController {
 	}
 
 	@PutMapping("/{id}")
-	public Shape update(@PathVariable String id, @Validated @RequestBody Shape p) {
-		return repository.save(p);
+	public Shape update(@PathVariable String id, @Validated @RequestBody Shape s) {
+		return repository.save(s);
 	}
 
 	@DeleteMapping("/{id}")
