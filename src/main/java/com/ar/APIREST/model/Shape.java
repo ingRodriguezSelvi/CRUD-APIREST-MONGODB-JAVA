@@ -11,7 +11,7 @@ public class Shape {
 	@Id
 	@NonNull
 	public String _id;
-
+	
 	public TypeShape type;
 
 	public Double base;

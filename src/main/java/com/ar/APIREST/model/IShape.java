@@ -2,14 +2,14 @@ package com.ar.APIREST.model;
 
 public interface IShape {
 
-	public Double getBase();
+	public abstract Double getBase();
 
-	public Double getHeight();
+	public abstract Double getHeight();
 
-	public Double getDiameter();
+	public abstract Double getDiameter();
 
-	public Double getArea();
+	public abstract Double getArea();
 
-	public TypeShape getType();
+	public abstract TypeShape getType();
 
 }

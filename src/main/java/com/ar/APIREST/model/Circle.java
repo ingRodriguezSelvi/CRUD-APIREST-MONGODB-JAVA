@@ -1,17 +1,19 @@
 package com.ar.APIREST.model;
 
+
+
 public class Circle extends Shape implements IShape {
 
     public Circle(Double diameter, String _id) {
         super(_id, TypeShape.CIRCLE, null, null, diameter);
     }
 
-    public static Double getArea(Double diameter) {
-        return Math.PI * Math.pow(diameter / 2, 2);
+    public Double getArea() {
+        return Math.PI * Math.pow(this.getDiameter() / 2, 2);
     }
 
     @Override
-    public Double getArea() {
-        return Math.PI * Math.pow(this.getDiameter() / 2, 2);
+    public String toString() {
+        return getType().name() + "[Diameter=" + getDiameter() + ", Area=" + getArea() + "]";
     }
 }

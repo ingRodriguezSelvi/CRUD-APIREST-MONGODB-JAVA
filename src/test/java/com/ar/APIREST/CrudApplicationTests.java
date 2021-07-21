@@ -51,7 +51,6 @@ class ShapeApplicationTest {
 		Shape shape = new Shape(null, TypeShape.SQUARE, 40d, 780d, 20d);
 		ShapeFactory factory = new ShapeFactory();
 		IShape square = factory.makeShape(shape);
-
 		assertTrue(square instanceof Square);
 		assertEquals(40d, square.getBase());
 		assertNull(square.getHeight());

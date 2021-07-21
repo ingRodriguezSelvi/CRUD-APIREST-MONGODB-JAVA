@@ -56,10 +56,10 @@ public class FigureGeometricController {
 	}
 
 	@GetMapping("area/{id}")
-	public IShape readAll(@PathVariable String id) {
+	public double readAll(@PathVariable String id) {
 		this.shape = repository.findById(id);
 		ShapeFactory factory = new ShapeFactory();
 		IShape newShape = factory.makeShape(this.shape.get());
-		return newShape;
+		return newShape.getArea();
 	}
 }
