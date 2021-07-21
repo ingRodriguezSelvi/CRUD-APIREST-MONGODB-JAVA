@@ -2,14 +2,10 @@ package com.ar.APIREST.controllers;
 
 import java.util.List;
 import java.util.Optional;
-
 import com.ar.APIREST.ShapeFactory;
-import com.ar.APIREST.exeptions.NoShapeTypeException;
 import com.ar.APIREST.model.IShape;
 import com.ar.APIREST.model.Shape;
-
 import com.ar.APIREST.repositories.IFigureGeomtric;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,7 +25,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/Shape")
 public class FigureGeometricController {
 	public Optional<Shape> shape;
-	public Shape shapeArea;
 
 	@Autowired
 	private IFigureGeomtric repository;
@@ -62,15 +57,9 @@ public class FigureGeometricController {
 
 	@GetMapping("area/{id}")
 	public IShape readAll(@PathVariable String id) {
-		ShapeFactory factory = new ShapeFactory();
-		IShape shape = null;
 		this.shape = repository.findById(id);
-		this.shapeArea = this.shape.get();
-		if (this.shapeArea.type == null) {
-			throw new NoShapeTypeException("Shape type not valid");
-		} else {
-			shape = factory.makeShape(this.shapeArea);
-		}
-		return shape;
+		ShapeFactory factory = new ShapeFactory();
+		IShape newShape = factory.makeShape(this.shape.get());
+		return newShape;
 	}
 }

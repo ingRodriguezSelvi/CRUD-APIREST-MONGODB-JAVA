@@ -6,6 +6,11 @@ public class Circle extends Shape implements IShape {
         super(_id, TypeShape.CIRCLE, null, null, diameter);
     }
 
+    public static Double getArea(Double diameter) {
+        return Math.PI * Math.pow(diameter / 2, 2);
+    }
+
+    @Override
     public Double getArea() {
         return Math.PI * Math.pow(this.getDiameter() / 2, 2);
     }

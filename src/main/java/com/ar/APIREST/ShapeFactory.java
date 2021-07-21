@@ -9,26 +9,27 @@ import com.ar.APIREST.model.Triangle;
 
 public class ShapeFactory {
 
-    public IShape makeShape(Shape shape) {
-        IShape Ishape = null;
+    public IShape makeShape(Shape inshape) {
+        IShape shape = null;
 
-        if (shape.type == null) {
+        if (inshape.type == null) {
             throw new NoShapeTypeException("Shape type not valid");
         }
-        switch (shape.type) {
+
+        switch (inshape.type) {
             case CIRCLE:
-                shape = new Circle(shape.diameter, shape._id);
+                shape = new Circle(inshape.diameter, inshape._id);
                 break;
             case TRIANGLE:
-                shape = new Triangle(shape._id, shape.base, shape.height);
+                shape = new Triangle(inshape._id, inshape.base, inshape.height);
                 break;
             case SQUARE:
-                shape = new Square(shape._id, shape.base);
+                shape = new Square(inshape._id, inshape.base);
                 break;
             default:
                 throw new NoShapeTypeException("Shape type not valid");
         }
 
-        return Ishape;
+        return shape;
     }
 }
