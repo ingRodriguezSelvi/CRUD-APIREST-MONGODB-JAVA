@@ -21,7 +21,7 @@ class ShapeApplicationTest {
 
 	@Test
 	public void testCircleShape() {
-		Shape shape = new Shape("IdTest0001", TypeShape.CIRCLE, 40d, 780d, 20d);
+		Shape shape = new Shape("IdTest0001", TypeShape.CIRCLE, null, null, 20d);
 		ShapeFactory factory = new ShapeFactory();
 		IShape circle = factory.makeShape(shape);
 
